@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <title>مساعد الشهادة السودانية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🎓</div>
+      <div><strong>مساعد الشهادة السودانية</strong><small>تعلم وعلّم بذكاء</small></div>
+    </div>
+    <div class="status"><span></span> جاهز للمساعدة</div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <label>المرحلة<label>
+      <select id="stage"><option>الشهادة السودانية</option><option>المرحلة المتوسطة</option></select>
+      <label>المادة</label>
+      <select id="subject">
+        <option value="رياضيات">الرياضيات</option><option value="فيزياء">الفيزياء</option>
+        <option value="كيمياء">الكيمياء</option><option value="أحياء">الأحياء</option>
+        <option value="إنجليزي">اللغة الإنجليزية</option><option value="عربي">اللغة العربية</option>
+        <option value="جغرافيا">الجغرافيا</option><option value="تاريخ">التاريخ</option>
+        <option value="حكومة">التربية الوطنية والمواطنة</option><option value="إسلامية">التربية الإسلامية</option>
+      </select>
+      <label>نوع الإجابة</label>
+      <div class="answer-types">
+        <button class="type active" data-type="شرح وتفصيل">شرح وتفصيل</button>
+        <button class="type" data-type="إجابة مختصرة">إجابة مختصرة</button>
+        <button class="type" data-type="خطوات الحل">خطوات الحل</button>
+      </div>
+      <label>اختيارات إضافية</label>
+      <label class="check"><input id="videoMode" type="checkbox" checked> عرض شرح مرئي خطواتي</label>
+      <label class="check"><input id="verifyMode" type="checkbox" checked> التحقق من البيانات والمراجع</label>
+    </aside>
+
+    <section class="workspace">
+      <div class="hero">
+        <h1>مرحبًا بك <span>👋</span></h1>
+        <p>اكتب السؤال أو ارفع صورة الامتحان للحصول على شرح دقيق ومدروس</p>
+      </div>
+
+      <div class="input-card">
+        <textarea id="question" rows="5" placeholder="اكتب السؤال هنا… مثال: احسب ناتج المعادلة أو اكتب نص السؤال من الامتحان"></textarea>
+        <div class="preview-row">
+          <div id="imagePreview" class="image-preview" hidden>
+            <img id="previewImage" alt="معاينة السؤال">
+            <button id="removeImage" type="button" aria-label="حذف الصورة">✕</button>
+          </div>
+          <span id="ocrStatus" class="ocr-status"></span>
+        </div>
+        <div class="actions">
+          <label class="upload" for="imageInput">📷 رفع صورة سؤال</label>
+          <input id="imageInput" type="file" accept="image/*" capture="environment" hidden>
+          <button id="clearBtn" class="clear" type="button">مسح</button>
+          <button id="solveBtn" class="solve" type="button">الحل بالذكاء الاصطناعي <span>←</span></button>
+        </div>
+      </div>
+
+      <div id="loading" class="loading" hidden>
+        <div class="spinner"></div><span>جاري تحليل السؤال وإعداد الحل…</span>
+      </div>
+
+      <article id="answerCard" class="answer-card" hidden>
+        <div class="answer-head">
+          <div><span class="answer-icon">✓</span><strong>الحل والشرح</strong></div>
+          <button id="copyBtn" type="button">نسخ الإجابة</button>
+        </div>
+        <div id="answer" class="answer"></div>
+        <div id="videoLesson" class="video-lessons" hidden></div>
+        <div class="notice">تنبيه: راجع الحل مع المنهج المعتمد والمعلم؛ قد تظهر أخطاء في الذكاء الاصطناعي.</div>
+      </article>
+
+      <div class="features">
+        <div><b>📸 حل بالتصوير</b><span>ارفع صورة واضحة للسؤال</span></div>
+        <div><b>📚 جميع المواد</b><span>العلوم والآداب والرياضيات</span></div>
+        <div><b>🎬 شرح خطواتي</b><span>عرض الحل بصورة مرئية</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
